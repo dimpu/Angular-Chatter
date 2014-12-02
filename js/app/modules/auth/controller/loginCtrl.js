@@ -2,9 +2,10 @@
 
 (function ( define ) {
 
-	define([],function(){
-		var loginCtrl=function($scope){
-
+	define([], 
+		function(){
+			var loginCtrl=function($scope){
+				// bgVideoFactory.init_bg_video();
 		};
 		loginCtrl.$inject=['$scope'];
 

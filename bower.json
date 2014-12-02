@@ -1,12 +1,13 @@
 {
-  "name": "Chater",
+  "name": "Angular-Chatter",
   "version": "0.0.1",
-  "homepage": "https://github.com/dimpu/Angulizer",
+  "homepage": "https://github.com/dimpu/Angular-Chatter",
   "authors": [
     "Aravind Buddha <buddhaaravind@gmail.com>"
   ],
   "description": "A simpler anguler.js boilerplate",
   "keywords": [
+    "chatapp"
     "anguler",
     "node",
     "init",
@@ -38,6 +39,8 @@
     "angular-mocks": "~1.2.0",
     "angular-specs": "~0.0.1",
     "angular-scenario": "~1.2.0",
-    "bootstrap-sass-official": "~3.3.1"
+    "bootstrap-sass-official": "~3.3.1",
+    "jquery.mb.ytplayer": "~2.7.5",
+    "jackilyn.animate.scss": "*"
   }
 }
