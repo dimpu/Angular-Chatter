@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-gh-pages');
 
     var vendor_js = require('./vendor.config.js').vendor.js;
 
@@ -68,7 +69,7 @@ module.exports = function(grunt) {
             boot: {
                 files: [
                     {
-                        src: '../bin/js/app/boot.js',
+                        src: '../source/js/app/boot.js',
                         dest: '../dist/js/app/boot.js',
                         expand: false
                     }
@@ -156,6 +157,13 @@ module.exports = function(grunt) {
                 preserveLicenseComments : false,
                 optimize: "uglify"
             }
+        },
+
+        'gh-pages': {
+            options: {
+              base: '../dist'
+            },
+            src: ['**']
         }
 
 
@@ -176,11 +184,13 @@ module.exports = function(grunt) {
 		'clean:bin',
 		'copy:index',
 		'copy:build_assets',
+        'copy:build_appjs',
 		'concat:vendor',
         'clean:dist',
 		'copy:bin',
         'copy:boot',
-		'requirejs'
+		'requirejs',
+        'gh-pages'
 
 	]);
 

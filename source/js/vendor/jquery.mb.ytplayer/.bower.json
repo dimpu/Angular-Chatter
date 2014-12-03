@@ -10,6 +10,5 @@
   },
   "_source": "git://github.com/pupunzi/jquery.mb.YTPlayer.git",
   "_target": "~2.7.5",
-  "_originalSource": "jquery.mb.ytplayer",
-  "_direct": true
+  "_originalSource": "jquery.mb.ytplayer"
 }
