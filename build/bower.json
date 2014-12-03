@@ -7,7 +7,7 @@
   ],
   "description": "A simpler anguler.js boilerplate",
   "keywords": [
-    "chatapp"
+    "chatapp",
     "anguler",
     "node",
     "init",
@@ -25,7 +25,6 @@
     "tests"
   ],
   "dependencies": {
-    "headjs-notify": "0.9.7",
     "jquery": "~2.0.3",
     "requirejs": "~2.1.8",
     "requirejs-text": "2.0.10",
