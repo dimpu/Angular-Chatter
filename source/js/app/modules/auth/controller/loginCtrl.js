@@ -5,7 +5,10 @@
 	define([], 
 		function(){
 			var loginCtrl=function($scope){
-				// bgVideoFactory.init_bg_video();
+
+				$scope.login=function(){
+					
+				};
 		};
 		loginCtrl.$inject=['$scope'];
 

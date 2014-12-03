@@ -20,6 +20,10 @@
                 templateUrl : "./js/app/modules/auth/views/forget.html",
                 controller  : "forgetCtrl"
             })
+            .when('/dashboard',{
+                templateUrl : "./js/app/modules/bashboard/views/home.html",
+                controller  : "dashboard.homeCtrl"
+            })
             .otherwise({
                 redirectTo  : '/login'
             });

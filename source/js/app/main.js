@@ -9,10 +9,11 @@
     define([
             "utils/logger",
             "modules/auth/auth",
+            "modules/dashboard/dashboard",
             "RouteManager" ,
             'modules/app/directives/videoBgDirective'
         ],
-        function ($log,Auth,RouteManager,videoBgDirective){
+        function ($log,Auth,DashBoard,RouteManager,videoBgDirective){
            
             var 
             app     = {}, 

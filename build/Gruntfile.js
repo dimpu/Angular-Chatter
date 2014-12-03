@@ -112,8 +112,8 @@ module.exports = function(grunt) {
         },
 		watch: {
             src: {
-                files: ['../source/asserts/scss/**/*.scss'],
-                tasks: ['compass:bootstrap','copy:build_assets']
+                files: ['../source/asserts/scss/**/*.scss','../source/js/app/**'],
+                tasks: ['compass:bootstrap','copy:build_assets','build_bin']
             },
             options: {
                 livereload: true,
@@ -168,6 +168,14 @@ module.exports = function(grunt) {
 
 
 	});
+
+    grunt.registerTask('build_bin', [
+        'clean:bin',
+        'copy:index',
+        'copy:build_assets',
+        'copy:build_appjs',
+        'concat:vendor',
+    ]);
 
 
 	grunt.registerTask('default', [
