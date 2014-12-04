@@ -8,24 +8,49 @@
 					<h3 class="panel-title">Register</h3>
 			  </div>
 			  <div class="panel-body">
-					<form role="form" name="registerForm">
-					<div class="form-group">
+					<form role="form" novalidate name="registerForm"  ng-submit="register(user)">
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.username.$invalid && !registerForm.username.$pristine }">
 						<label for="">Username</label>
-						<input type="text" ng-model="user.username" class="form-control" id="" ng-required="true" placeholder="Username">
+						<input 
+						type="text" 
+						ng-model="user.username" 
+						ng-required="true" 
+						ng-minlength="3"
+						unique-user="true"
+						class="form-control" 
+						name="username" 
+						placeholder="Username" />
+						
+					 	<p ng-show="registerForm.username.$error.required && !registerForm.username.$pristine" class="help-block">Username is required.</p>
+
+					 	<p ng-show="registerForm.username.$error.minlength" class="help-block">Username is too short.</p>
+
+					 	<p ng-show="registerForm.username.$error.uniqueuser" class="help-block">Username already taken.</p>
 					</div>
-					<div class="form-group">
+			<!-- 		<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" ng-model="user.password" class="form-control" id="" ng-required="true" placeholder="Email">
+						<input type="email" ng-required="ture"  ng-model="user.email" class="form-control" id="" ng-required="true" placeholder="Email">
+						<p class="error" ng-show="registerForm.username.$error.required && registerForm.username.$dirty">Required!</p>
+						<p class="error" ng-show="registerForm.username.$error.email && registerForm.username.$dirty">Invalid Email!</p>
+						<p class="error" ng-show="user.isEmailExits">User Name Taken</p>
 					</div>
 					<div class="form-group">
 						<label for="">Password</label>
 						<input type="text" ng-model="user.password" class="form-control" ng-required="true" id="" placeholder="Password">
+						<p class="error" ng-show="registerForm.password.$error.required && registerForm.password.$dirty">Required!</p>
+
 					</div>
 					<div class="form-group">
 						<label for="">Repeat Password</label>
-						<input type="text" class="form-control" ng-required="true" id="" placeholder="Password">
-					</div>
-					<button type="submit" class="btn btn-primary" ng-click="register(user)">Register</button>
+						<input type="text" class="form-control" ng-required="true" id="" placeholder="Repeat Password">
+						<p class="error" ng-show="registerForm.password2.$error.required && registerForm.password2.$dirty">Required!</p>
+						<p class="error" ng-show="registerForm.password == registerForm.password2 && registerForm.password2.$dirty">Password Mismatch</p>
+					</div> -->
+					<button 
+					type="submit" 
+					class="btn btn-primary" 
+					ng-disabled="registerForm.$invalid">Register</button>
+					
 				</form>
 			  </div>
 		</div>

@@ -8,8 +8,11 @@
 		database= 'chatter',
 		baseUrl = 'https://api.mongolab.com/api/1/databases';
 
-		var query = function (collection, parameters) {
-		 	parameters = parameters || {};
+		var query = function (collection, q) {
+		 	q = q || {};
+		 	var 
+		 	parameters={};
+		 	parameters['q']=JSON.stringify(q);
 		 	parameters['apiKey'] = apiKey;
 		 	var uri = baseUrl + '/' + database + '/collections/' + collection;
 		 	return $http({

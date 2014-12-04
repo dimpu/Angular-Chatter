@@ -7,14 +7,14 @@
 		var registerCtrl=function($scope,dataFactory){
       $scope.register=function(){
         var user_data= {
-          username   :"aravindbuddha",
-          password   :"dimpuaravind",
-          email      :"buddhaaravind@gmail.com",
-          created    :new Date().getTime(),
-          updated    :new Date().getTime()
+          username   : "aravindbuddha",
+          password   : "dimpuaravind",
+          email      : "buddhaaravind@gmail.com",
+          created    : new Date().getTime(),
+          updated    : new Date().getTime()
         };
 
-        dataFactory.createObject("users",user_data);
+        dataFactory.create("users",user_data);
 
        // var url="https://api.mongolab.com/api/1/databases/chatter/collections/users?apiKey=docEemXMEKY0WbS-EKHKHXCQQuolbDYP";
         // $http({
