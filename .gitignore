@@ -1,6 +1,6 @@
 .sass-cache
 node_modules
-/source/js/vendor
+#/source/js/vendor
 bin
 dist
 
