@@ -8,12 +8,13 @@
 
     define([
             "utils/logger",
+            "modules/app/services/dataFactory",
             "modules/auth/auth",
             "modules/dashboard/dashboard",
             "RouteManager" ,
             'modules/app/directives/videoBgDirective'
         ],
-        function ($log,Auth,DashBoard,RouteManager,videoBgDirective){
+        function ($log,dataFactory,Auth,DashBoard,RouteManager,videoBgDirective){
            
             var 
             app     = {}, 
@@ -32,6 +33,7 @@
                         appName,
                         [ "ngRoute", "ngSanitize","ngAnimate","Auth"]
                     )
+                    .factory('dataFactory', dataFactory)
                     .directive('videoBg',videoBgDirective)
                     .config( RouteManager  );
 
