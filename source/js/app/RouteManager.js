@@ -24,6 +24,10 @@
                 templateUrl : "./js/app/modules/bashboard/views/home.html",
                 controller  : "dashboard.homeCtrl"
             })
+            .when('/rooms',{
+                templateUrl : "./js/app/modules/rooms/views/home.html",
+                controller  : "rooms.homeCtrl"
+            })
             .otherwise({
                 redirectTo  : '/login'
             });

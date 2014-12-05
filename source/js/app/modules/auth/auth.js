@@ -4,19 +4,20 @@
 (function ( define, angular ){
 
 	define([
-        "modules/app/services/dataFactory",
-        "modules/auth/directives/uniqueUserDirective",
-        "modules/auth/directives/uniqueEmailDirective",
-		'modules/auth/controller/loginCtrl',
-		'modules/auth/controller/registerCtrl',
-		'modules/auth/controller/forgetCtrl',
+      "modules/app/services/dataFactory",
+      "modules/auth/directives/uniqueUserDirective",
+      "modules/auth/directives/uniqueEmailDirective",
+		  'modules/auth/controller/loginCtrl',
+		  'modules/auth/controller/registerCtrl',
+		  'modules/auth/controller/forgetCtrl',
 		],
+    
 		function(dataFactory,uniqueUserDirective,uniqueEmailDirective,loginCtrl,registerCtrl,forgetCtrl){
 			var moduleName = "Auth";
 		  angular.module( moduleName, [ ] )
           .factory( 'dataFactory', dataFactory)
-          .directive( 'uniqueUser',uniqueUserDirective )
-          .directive( 'uniqueEmail',uniqueEmailDirective )
+          .directive( 'uniqueuser',uniqueUserDirective )
+          .directive( 'uniquemail',uniqueEmailDirective )
           .controller( "loginCtrl",  loginCtrl)
           .controller( "registerCtrl",registerCtrl)
           .controller( "forgetCtrl",forgetCtrl);

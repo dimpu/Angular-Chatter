@@ -3,12 +3,12 @@
 
 <div class="row row-centered">
 	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 center-block">
-		<div class="panel panel-info" ng-controller="registerCtrl">
+		<div class="panel panel-info" ng-controller="registerCtrl" ng-class="{ 'shake' : registerForm.$invalid  }">
 			  <div class="panel-heading">
 					<h3 class="panel-title">Register</h3>
 			  </div>
 			  <div class="panel-body">
-					<form role="form" novalidate name="registerForm"  ng-submit="register(user)">
+				<form role="form" novalidate name="registerForm"  ng-submit="register_user(user)">
 					<div class="form-group" ng-class="{ 'has-error' : registerForm.username.$invalid && !registerForm.username.$pristine }">
 						<label for="">Username</label>
 						<input 
@@ -16,7 +16,7 @@
 						ng-model="user.username" 
 						ng-required="true" 
 						ng-minlength="3"
-						unique-user="true"
+						uniqueuser="true"
 						class="form-control" 
 						name="username" 
 						placeholder="Username" />
@@ -27,30 +27,82 @@
 
 					 	<p ng-show="registerForm.username.$error.uniqueuser" class="help-block">Username already taken.</p>
 					</div>
-			<!-- 		<div class="form-group">
-						<label for="">Email</label>
-						<input type="email" ng-required="ture"  ng-model="user.email" class="form-control" id="" ng-required="true" placeholder="Email">
-						<p class="error" ng-show="registerForm.username.$error.required && registerForm.username.$dirty">Required!</p>
-						<p class="error" ng-show="registerForm.username.$error.email && registerForm.username.$dirty">Invalid Email!</p>
-						<p class="error" ng-show="user.isEmailExits">User Name Taken</p>
-					</div>
-					<div class="form-group">
-						<label for="">Password</label>
-						<input type="text" ng-model="user.password" class="form-control" ng-required="true" id="" placeholder="Password">
-						<p class="error" ng-show="registerForm.password.$error.required && registerForm.password.$dirty">Required!</p>
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+						<label for="email">Email</label>
+						<input 
+						type="email" 
+						ng-model="user.email" 
+						ng-required="true" 
+						uniquemail="true"
+						class="form-control" 
+						name="email" 
+						placeholder="Email" />
+						
+					 	<p ng-show="registerForm.email.$error.required && !registerForm.email.$pristine" class="help-block">Email is required.</p>
 
+					 	<p ng-show="registerForm.email.$error.email" class="help-block">Enter valid email.</p>
+
+					 	<p ng-show="registerForm.email.$error.uniquemail" class="help-block">Email already taken.</p>
 					</div>
-					<div class="form-group">
-						<label for="">Repeat Password</label>
-						<input type="text" class="form-control" ng-required="true" id="" placeholder="Repeat Password">
-						<p class="error" ng-show="registerForm.password2.$error.required && registerForm.password2.$dirty">Required!</p>
-						<p class="error" ng-show="registerForm.password == registerForm.password2 && registerForm.password2.$dirty">Password Mismatch</p>
-					</div> -->
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
+						<label for="password">Password</label>
+						<input 
+						type="password" 
+						ng-model="user.password" 
+						ng-required="true"
+						ng-minlength="6"
+						ng-maxlength="12" 
+						class="form-control" 
+						name="password" 
+						placeholder="password" />
+
+						<p ng-show="registerForm.password.$error.required && !registerForm.password.$pristine" class="help-block">Password is required.</p>
+
+						<p ng-show="registerForm.password.$error.minlength" class="help-block">Password Should be min 6 chars.</p>
+
+						<p ng-show="registerForm.password.$error.maxlength" class="help-block">Password Should be max 12 chars.</p>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.question.$invalid && !registerForm.question.$pristine }">
+						<label for="">Username</label>
+						<input 
+						type="text" 
+						ng-model="user.question" 
+						ng-required="true" 
+						ng-minlength="5"
+						ng-maxlength="50"
+						class="form-control" 
+						name="question" 
+						placeholder="Your Secret Question?" />
+						<div class="help-block">This will be used when you forget your password.</div>
+					 	<p ng-show="registerForm.question.$error.required && !registerForm.question.$pristine" class="help-block">This Field is required.</p>
+
+					 	<p ng-show="registerForm.question.$error.minlength" class="help-block">Min length 5.</p>
+
+					 	<p ng-show="registerForm.question.$error.maxlength" class="help-block">Max length 50.</p>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.answer.$invalid && !registerForm.answer.$pristine }">
+						<label for="">Username</label>
+						<input 
+						type="text" 
+						ng-model="user.answer" 
+						ng-required="true" 
+						ng-minlength="5"
+						ng-maxlength="50"
+						class="form-control" 
+						name="answer" 
+						placeholder="Your Secret Question?" />
+						<div class="help-block">You will lost your account if you forgot this answer.</div>
+					 	<p ng-show="registerForm.answer.$error.required && !registerForm.answer.$pristine" class="help-block">This Field is required.</p>
+
+					 	<p ng-show="registerForm.answer.$error.minlength" class="help-block">Min length 5.</p>
+
+					 	<p ng-show="registerForm.answer.$error.maxlength" class="help-block">Max length 50.</p>
+					</div>
+
 					<button 
 					type="submit" 
 					class="btn btn-primary" 
 					ng-disabled="registerForm.$invalid">Register</button>
-					
 				</form>
 			  </div>
 		</div>
