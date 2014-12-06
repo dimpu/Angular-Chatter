@@ -8,14 +8,18 @@
 			return{
 				require: 'ngModel',
 			    link: function(scope, ele, attrs, ctrl) {
-
+            console.log(ctrl);
 			    	ctrl.$parsers.push(function (userEmailValue) {
 			    		dataFactory.query("users",{
 			    			username:userEmailValue
 			    		})
 			    		.success(function(data,state,headers,cfg){
-			    			if(data.length > 0)
-			    				ctrl.$setValidity('uniquemail', false);
+			    			if(data.length > 0){
+                  ctrl.$setValidity('uniquemail', false);
+                }else{
+                   ctrl.$setValidity('uniquemail', true);
+                }
+			    				
 			    		})
 			    		.error(function(data, status, headers, cfg){
 			    			ctrl.$setValidity('uniquemail', false);
