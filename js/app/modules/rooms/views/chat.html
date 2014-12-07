@@ -1,0 +1,51 @@
+
+
+<div ng-include="'js/app/modules/app/views/partials/logo-center.html'"></div>
+
+<div ng-include="'js/app/modules/rooms/views/partials/menu.html'"></div>
+
+<div class="row row-centered">
+	<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 center-block">
+		<div class="panel panel-info">
+			  <div class="panel-heading">
+					<h3 class="panel-title">{{ChatTitle}}</h3>
+			  </div>
+			  <div class="panel-body">
+			  	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="NoChat">
+					<div class="panel panel-info">
+				  	  	<div class="panel-body">
+				  			Start Your Chat! 
+				  	  	</div>
+				  	</div>
+				</div>
+
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="msg in msgs">
+						<b>{{msg.nickname}}</b>
+						<span>{{msg.message}}</span>
+					</li>
+				</ul>
+
+				<!-- 	<form  name="msgPushForm" class="form-inline" role="form"> -->
+					<!-- <div class="col-lg-12"> -->
+					<form name="pushChatForm" ng-submit="pushMsg(msg)">
+						<div class="input-group">
+				          <input type="text" 
+				          class="form-control"
+						  ng-model="msg.message"
+				          >
+				          <span class="input-group-btn">
+				            <button class="btn btn-primary" type="button">Go!</button>
+				          </span>
+				        </div>
+				    </form>
+					<!-- </div>	 -->
+				<!-- 		
+					
+						<button type="submit" class="btn btn-primary">Submit</button> -->
+					<!-- </form> -->
+
+			  </div>
+		</div>
+	</div>
+</div>

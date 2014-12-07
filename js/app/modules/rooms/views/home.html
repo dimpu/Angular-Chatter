@@ -1,0 +1,49 @@
+<div ng-include="'js/app/modules/app/views/partials/logo-center.html'"></div>
+
+<div ng-include="'js/app/modules/rooms/views/partials/menu.html'"></div>
+
+<div class="row row-centered">
+  <div  ng-show="IsLoading"  ng-include="'js/app/modules/rooms/views/partials/loading-rooms.html'"></div>
+  
+  <div  ng-show="RoomsNotAvilable"  ng-include="'js/app/modules/rooms/views/partials/no-rooms.html'"></div>
+<!-- 
+  <div ng-show="IsLoading" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+     <div class="panel panel-info">
+         <div class="panel-heading">
+           <h3 class="panel-title">Loading</h3>
+         </div>
+         <div class="panel-body">
+           Please waith while it's loading your rooms.
+         </div>
+     </div>
+  </div> -->
+
+<!--   <div ng-show="RoomsNotAvilable" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="panel panel-info">
+         <div class="panel-heading">
+           <h3 class="panel-title">NO Rooms</h3>
+         </div>
+         <div class="panel-body">
+           No rooms are created yet. Please click on create in the menu.
+         </div>
+     </div> 
+  </div> -->
+
+
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ng-repeat="room in rooms">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+          <a ng-href="#/room/{{room._id.$oid}}">
+            <h3 class="panel-title">
+              {{room.RoomName}}
+            </h3>
+          </a>
+        </div>
+        <div class="panel-body">
+          {{room.Description || 'No Description Avilable'}}
+        </div>
+    </div>
+
+  </div>
+
+</div>
