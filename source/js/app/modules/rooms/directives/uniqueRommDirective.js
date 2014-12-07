@@ -4,7 +4,7 @@
 		"modules/app/services/dataFactory"
 		],
 		function(dataFactory){
-		var uniqueEmailDirective=function($http,$q, $timeout,dataFactory){
+		var uniqueRommDirective=function($http,$q, $timeout,dataFactory){
 			return{
 				require:  'ngModel' ,
 			    link: function(scope, ele, attrs, ctrl) {
@@ -14,8 +14,8 @@
 					        return $q.when();
 					    }
 					    var def = $q.defer();
-					    dataFactory.query("users",{
-				    		email:ele.val()
+					    dataFactory.query("rooms",{
+				    		RoomName:ele.val()
 				    	})
 				    	.success(function(data,state,headers,cfg){
 				    		if(data.length > 0){
@@ -32,7 +32,7 @@
 				}
 			}
 		};
-		uniqueEmailDirective.$inject=['$http','$q', '$timeout','dataFactory'];
-		return uniqueEmailDirective;
+		uniqueRommDirective.$inject=['$http','$q', '$timeout','dataFactory'];
+		return uniqueRommDirective;
 	});
 }(define));

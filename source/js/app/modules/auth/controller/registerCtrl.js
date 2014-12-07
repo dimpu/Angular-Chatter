@@ -4,36 +4,25 @@
 
       
 	define([ "modules/app/services/dataFactory" ],function(dataFactory){
-		var registerCtrl=function($scope,dataFactory){
-      $scope.register=function(){
-        var user_data= {
-          username   : "aravindbuddha",
-          password   : "dimpuaravind",
-          email      : "buddhaaravind@gmail.com",
-          created    : new Date().getTime(),
-          updated    : new Date().getTime()
-        };
-
-        dataFactory.create("users",user_data);
-
-       // var url="https://api.mongolab.com/api/1/databases/chatter/collections/users?apiKey=docEemXMEKY0WbS-EKHKHXCQQuolbDYP";
-        // $http({
-        //   method: "POST", 
-        //   url: url, 
-        //   data:JSON.stringify(user_data), 
-        //   cache: false
-        // });
-        // dataFactory.createObject({
-        //   username   :"aravindbuddha",
-        //   password   :"dimpuaravind",
-        //   email      :"buddhaaravind@gmail.com",
-        //   created    :new Date(),
-        //   updated    :new Data()
-        // });  
+		var registerCtrl=function($scope,$cookieStore,$location,dataFactory){
+      $scope.register_user=function(user){
+      var loader = Ladda.create(document.getElementById("form-register-btn"));
+        user['Created']= user['Updated'] = new Date().getTime();
+        loader.start();
+        dataFactory.create("users",user)
+        .success(function(data){
+          $cookieStore.put("LoggedInUserId",data._id.$oid);
+          $cookieStore.put("LoggedInNickName",data.NickName);
+          $location.path('/rooms');
+          loader.stop();
+        })
+        .error(function(){
+          loader.stop();
+        });
       }
       
 		};
-		registerCtrl.$inject=['$scope','dataFactory'];
+		registerCtrl.$inject=['$scope','$cookieStore','$location','dataFactory'];
 
 		return registerCtrl;
 	});

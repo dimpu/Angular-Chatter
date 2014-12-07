@@ -4,14 +4,27 @@
 module.exports = function(config) {
   var vendor_js = require('./vendor.config.js').vendor.js;
 
-  var _files=vendor_js;
+  var _files=[];
 
+  vendor_js.forEach(function(_lib){
+    _files.push({
+        pattern :_lib,
+        include :flase
+    });
+  });
   _files.push({
-        pattern: '../source/js/app/**', 
+        pattern: '../source/js/app/**/*.js', 
         included: false
+  },{
+        pattern: '../source/js/test/spec/**/*.js', 
+        included: false
+  },{
+        '../source/test/test-main.js'
   });
 
-  _files.push('test-main.js');
+  
+
+  
 
   config.set({
 
@@ -21,7 +34,8 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'requirejs'],
+    frameworks: ['jasmine', "requirejs"],
+
 
     // list of files / patterns to load in the browser
     files: _files,

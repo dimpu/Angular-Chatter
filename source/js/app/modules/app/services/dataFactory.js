@@ -2,7 +2,7 @@
 
 (function (define){
 	define([],function(){
-	var dataFactory=function($http){
+	var dataFactory=function($http,$q){
 		var 
 		apiKey  = 'docEemXMEKY0WbS-EKHKHXCQQuolbDYP',
 		database= 'chatter',
@@ -60,20 +60,62 @@
 		 		cache: false
 		 	});
 		};
+    var querySSE = function (collection, q) {
+      q = q || {};
+      var 
+      parameters={};
+      parameters['q']=JSON.stringify(q);
+      parameters['apiKey'] = apiKey;
 
+      var uri = baseUrl + '/' + database + '/collections/' + collection +"/?";
+      angular.forEach(parameters, function(value, key){
 
+        uri += "&"+key+"="+value;        
+      });
+      var deferred = $q.defer();
+      deferred.notify('About to get data');
+      //source
+      var evtSource = new EventSource(uri);
+      evtSource.onmessage = function(e) {
+         deferred.resolve(e.data,e);
+         console.log(e.data);
+      }
+      return deferred.promise;
 
+      // return $http({
+      //   method: "GET", 
+      //   url   : uri, 
+      //   params: parameters,
+      //     cache : false
+      // });
+    };
+    var queryLoop= function (collection, q,isFirst) {
+      q = q || {};
+      var 
+      parameters={};
+      parameters['q']=JSON.stringify(q);
+      parameters['apiKey'] = apiKey;
+      var uri = baseUrl + '/' + database + '/collections/' + collection;
+      return $http({
+        method: "GET", 
+        url   : uri, 
+        params: parameters,
+          cache : false
+      });
 
+      
+    };
 		return{
-            query    : query,
-            queryById: queryById,
-            create   : createObject,
-            update   : updateObject,
-            delete   : deleteObject
+      query    : query,
+      querySSE : querySSE,
+      queryById: queryById,
+      create   : createObject,
+      update   : updateObject,
+      delete   : deleteObject
 		}
 	};
 
-	dataFactory.$inject=['$http'];
+	dataFactory.$inject=['$http','$q'];
 
 	return dataFactory;
 

@@ -10,11 +10,12 @@
             "utils/logger",
             "modules/app/services/dataFactory",
             "modules/auth/auth",
+            "modules/rooms/rooms",
             "modules/dashboard/dashboard",
             "RouteManager" ,
             'modules/app/directives/videoBgDirective'
         ],
-        function ($log,dataFactory,Auth,DashBoard,RouteManager,videoBgDirective){
+        function ($log,dataFactory,Auth,Rooms,DashBoard,RouteManager,videoBgDirective){
            
             var 
             app     = {}, 
@@ -31,11 +32,14 @@
             app = angular
                     .module(
                         appName,
-                        [ "ngRoute", "ngSanitize","ngAnimate","Auth"]
+                        [ "ngRoute", "ngSanitize","ngAnimate","Auth","Rooms"]
                     )
                     .factory('dataFactory', dataFactory)
                     .directive('videoBg',videoBgDirective)
-                    .config( RouteManager  );
+                    .config( RouteManager );
+                    // .config(['$compileProvider ',function($compileProvider ){
+                    //     $compileProvider.debugInfoEnabled(true)
+                    // }]);
 
             angular.bootstrap( document.getElementsByTagName("body")[0], [ appName ]);
 
