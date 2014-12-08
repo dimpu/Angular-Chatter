@@ -17,8 +17,8 @@
 		  .controller("rooms.HomeCtrl",HomeCtrl)
       .controller("rooms.CreateCtrl",CreateCtrl)
       .controller("rooms.ChatCtrl",ChatCtrl)
-      .directive("uniqueroom",uniqueRommDirective);
-      // .controller("rooms.MenuCtrl",MenuCtrl)
+      .directive("uniqueroom",uniqueRommDirective)
+      .controller("rooms.MenuCtrl",MenuCtrl);
       // .controller("rooms.CreateCtrl",CreateCtrl);
 		 return ModuleName;
 	});
