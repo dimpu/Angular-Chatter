@@ -8,32 +8,33 @@
 			$scope.msgs=[];
       $scope.NoChat=true;
 
-      // dataFactory.query("msgs",{"RoomId":$routeParams.RoomId})
-      // .success(function(data){
-      //   $scope.msgs=data;
-      //   if(data.length){
-      //     $scope.NoChat=false;
-      //   }
-      // });
+      $scope.scrollTop = 0
+      $scope.scrollHeight = 0
+      $scope.onScroll = function (scrollTop, scrollHeight) {
+        $scope.scrollTop = scrollTop
+        $scope.scrollHeight = scrollHeight
+      }
 
       dataFactory.queryById("rooms",$routeParams.RoomId)
       .success(function(data){
         $scope.ChatTitle=data.RoomName;
       });
-
-      // dataFactory.querySSE("msgs",{"RoomId": $routeParams.RoomId})
-      // .then(function(data){
-      //   console.log(data);
-      //    $scope.msgs=JSON.parse(data);
-      //      $scope.NoChat=false;
-      // });
-
       var promise = $interval(function(){
         dataFactory.query("msgs",{"RoomId": $routeParams.RoomId})
         .then(function(data){
           console.log(data);
             $scope.msgs = data.data;
             $scope.NoChat=false;
+            var divHeight=$(".scroller div").height();
+            var scrollPos=$(".scroller").scrollTop();
+            console.log(divHeight +" :: "+ scrollPos);
+            $(".scroller").scrollTop($(".scroller div").height());
+            $(".scroller").perfectScrollbar('update');
+
+            if(scrollPos <= divHeight && scrollPos > divHeight -100 ) {
+             
+            }
+           
         });
 
       },500);
@@ -45,13 +46,12 @@
         }; 
         msg['RoomId']   = $routeParams.RoomId;
         msg['Created']  = new Date().getTime();
-        
+      
         dataFactory.create("msgs",msg)
         .success(function(data){
           console.log(data);
         });
         $scope.msg.MsgText="";
-
 			}
 		};
 

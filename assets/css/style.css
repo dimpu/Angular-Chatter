@@ -13653,29 +13653,629 @@ button.close {
   backface-visibility: hidden;
 }
 
-/* line 11, ../scss/style.scss */
-body {
-  background: #000;
+/*!
+ * Ladda
+ * http://lab.hakim.se/ladda
+ * MIT licensed
+ *
+ * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+ */
+/*************************************
+ * CONFIG
+ */
+/*************************************
+ * MIXINS
+ */
+/*************************************
+ * BUTTON BASE
+ */
+/* line 60, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button {
+  position: relative;
 }
 
-/* line 20, ../scss/style.scss */
+/* Spinner animation */
+/* line 66, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button .ladda-spinner {
+  position: absolute;
+  z-index: 2;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  top: 50%;
+  margin-top: -16px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Button label */
+/* line 79, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button .ladda-label {
+  position: relative;
+  z-index: 3;
+}
+
+/* Progress bar */
+/* line 85, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button .ladda-progress {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.1s linear all !important;
+  -moz-transition: 0.1s linear all !important;
+  -ms-transition: 0.1s linear all !important;
+  -o-transition: 0.1s linear all !important;
+  transition: 0.1s linear all !important;
+}
+
+/* line 98, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-loading] .ladda-progress {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*************************************
+ * EASING
+ */
+/* line 108, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button,
+.ladda-button .ladda-spinner,
+.ladda-button .ladda-label {
+  -webkit-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+  -moz-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+  -ms-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+  -o-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+}
+
+/* line 114, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-in],
+.ladda-button[data-style=zoom-in] .ladda-spinner,
+.ladda-button[data-style=zoom-in] .ladda-label,
+.ladda-button[data-style=zoom-out],
+.ladda-button[data-style=zoom-out] .ladda-spinner,
+.ladda-button[data-style=zoom-out] .ladda-label {
+  -webkit-transition: 0.3s ease all !important;
+  -moz-transition: 0.3s ease all !important;
+  -ms-transition: 0.3s ease all !important;
+  -o-transition: 0.3s ease all !important;
+  transition: 0.3s ease all !important;
+}
+
+/*************************************
+ * EXPAND LEFT
+ */
+/* line 129, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-right] .ladda-spinner {
+  right: 14px;
+}
+/* line 133, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-right][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-right][data-size="xs"] .ladda-spinner {
+  right: 4px;
+}
+/* line 138, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-right][data-loading] {
+  padding-right: 56px;
+}
+/* line 141, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-right][data-loading] .ladda-spinner {
+  opacity: 1;
+}
+/* line 145, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-right][data-loading][data-size="s"], .ladda-button[data-style=expand-right][data-loading][data-size="xs"] {
+  padding-right: 40px;
+}
+
+/*************************************
+ * EXPAND RIGHT
+ */
+/* line 158, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-left] .ladda-spinner {
+  left: 14px;
+}
+/* line 162, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-left][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-left][data-size="xs"] .ladda-spinner {
+  left: 4px;
+}
+/* line 167, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-left][data-loading] {
+  padding-left: 56px;
+}
+/* line 170, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-left][data-loading] .ladda-spinner {
+  opacity: 1;
+}
+/* line 174, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-left][data-loading][data-size="s"], .ladda-button[data-style=expand-left][data-loading][data-size="xs"] {
+  padding-left: 40px;
+}
+
+/*************************************
+ * EXPAND UP
+ */
+/* line 186, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-up] {
+  overflow: hidden;
+}
+/* line 189, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-up] .ladda-spinner {
+  top: -32px;
+  left: 50%;
+  margin-left: -16px;
+}
+/* line 195, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-up][data-loading] {
+  padding-top: 54px;
+}
+/* line 198, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-up][data-loading] .ladda-spinner {
+  opacity: 1;
+  top: 14px;
+  margin-top: 0;
+}
+/* line 204, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-up][data-loading][data-size="s"], .ladda-button[data-style=expand-up][data-loading][data-size="xs"] {
+  padding-top: 32px;
+}
+/* line 208, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-up][data-loading][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-up][data-loading][data-size="xs"] .ladda-spinner {
+  top: 4px;
+}
+
+/*************************************
+ * EXPAND DOWN
+ */
+/* line 220, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-down] {
+  overflow: hidden;
+}
+/* line 223, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-down] .ladda-spinner {
+  top: 62px;
+  left: 50%;
+  margin-left: -16px;
+}
+/* line 229, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-down][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-down][data-size="xs"] .ladda-spinner {
+  top: 40px;
+}
+/* line 234, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-down][data-loading] {
+  padding-bottom: 54px;
+}
+/* line 237, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-down][data-loading] .ladda-spinner {
+  opacity: 1;
+}
+/* line 241, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=expand-down][data-loading][data-size="s"], .ladda-button[data-style=expand-down][data-loading][data-size="xs"] {
+  padding-bottom: 32px;
+}
+
+/*************************************
+ * SLIDE LEFT
+ */
+/* line 252, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-left] {
+  overflow: hidden;
+}
+/* line 255, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-left] .ladda-label {
+  position: relative;
+}
+/* line 258, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-left] .ladda-spinner {
+  left: 100%;
+  margin-left: -16px;
+}
+/* line 264, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-left][data-loading] .ladda-label {
+  opacity: 0;
+  left: -100%;
+}
+/* line 268, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-left][data-loading] .ladda-spinner {
+  opacity: 1;
+  left: 50%;
+}
+
+/*************************************
+ * SLIDE RIGHT
+ */
+/* line 279, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-right] {
+  overflow: hidden;
+}
+/* line 282, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-right] .ladda-label {
+  position: relative;
+}
+/* line 285, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-right] .ladda-spinner {
+  right: 100%;
+  margin-left: -16px;
+}
+/* line 291, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-right][data-loading] .ladda-label {
+  opacity: 0;
+  left: 100%;
+}
+/* line 295, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-right][data-loading] .ladda-spinner {
+  opacity: 1;
+  left: 50%;
+}
+
+/*************************************
+ * SLIDE UP
+ */
+/* line 306, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-up] {
+  overflow: hidden;
+}
+/* line 309, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-up] .ladda-label {
+  position: relative;
+}
+/* line 312, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-up] .ladda-spinner {
+  left: 50%;
+  margin-left: -16px;
+  margin-top: 1em;
+}
+/* line 319, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-up][data-loading] .ladda-label {
+  opacity: 0;
+  top: -1em;
+}
+/* line 323, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-up][data-loading] .ladda-spinner {
+  opacity: 1;
+  margin-top: -16px;
+}
+
+/*************************************
+ * SLIDE DOWN
+ */
+/* line 334, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-down] {
+  overflow: hidden;
+}
+/* line 337, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-down] .ladda-label {
+  position: relative;
+}
+/* line 340, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-down] .ladda-spinner {
+  left: 50%;
+  margin-left: -16px;
+  margin-top: -2em;
+}
+/* line 347, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-down][data-loading] .ladda-label {
+  opacity: 0;
+  top: 1em;
+}
+/* line 351, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=slide-down][data-loading] .ladda-spinner {
+  opacity: 1;
+  margin-top: -16px;
+}
+
+/*************************************
+ * ZOOM-OUT
+ */
+/* line 363, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-out] {
+  overflow: hidden;
+}
+
+/* line 366, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-out] .ladda-spinner {
+  left: 50%;
+  margin-left: -16px;
+  -webkit-transform: scale(2.5);
+  -moz-transform: scale(2.5);
+  -ms-transform: scale(2.5);
+  -o-transform: scale(2.5);
+  transform: scale(2.5);
+}
+
+/* line 372, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-out] .ladda-label {
+  position: relative;
+  display: inline-block;
+}
+
+/* line 377, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-out][data-loading] .ladda-label {
+  opacity: 0;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+/* line 382, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-out][data-loading] .ladda-spinner {
+  opacity: 1;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
+/*************************************
+ * ZOOM-IN
+ */
+/* line 393, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-in] {
+  overflow: hidden;
+}
+
+/* line 396, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-in] .ladda-spinner {
+  left: 50%;
+  margin-left: -16px;
+  -webkit-transform: scale(0.2);
+  -moz-transform: scale(0.2);
+  -ms-transform: scale(0.2);
+  -o-transform: scale(0.2);
+  transform: scale(0.2);
+}
+
+/* line 402, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-in] .ladda-label {
+  position: relative;
+  display: inline-block;
+}
+
+/* line 407, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-in][data-loading] .ladda-label {
+  opacity: 0;
+  -webkit-transform: scale(2.2);
+  -moz-transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -o-transform: scale(2.2);
+  transform: scale(2.2);
+}
+
+/* line 412, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=zoom-in][data-loading] .ladda-spinner {
+  opacity: 1;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
+/*************************************
+ * CONTRACT
+ */
+/* line 423, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract] {
+  overflow: hidden;
+  width: 100px;
+}
+
+/* line 427, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract] .ladda-spinner {
+  left: 50%;
+  margin-left: -16px;
+}
+
+/* line 432, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract][data-loading] {
+  border-radius: 50%;
+  width: 52px;
+}
+
+/* line 436, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract][data-loading] .ladda-label {
+  opacity: 0;
+}
+
+/* line 439, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract][data-loading] .ladda-spinner {
+  opacity: 1;
+}
+
+/*************************************
+ * OVERLAY
+ */
+/* line 449, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract-overlay] {
+  overflow: hidden;
+  width: 100px;
+  box-shadow: 0px 0px 0px 3000px transparent;
+}
+
+/* line 455, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract-overlay] .ladda-spinner {
+  left: 50%;
+  margin-left: -16px;
+}
+
+/* line 460, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract-overlay][data-loading] {
+  border-radius: 50%;
+  width: 52px;
+  /*outline: 10000px solid rgba( 0, 0, 0, 0.5 );*/
+  box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.8);
+}
+
+/* line 467, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract-overlay][data-loading] .ladda-label {
+  opacity: 0;
+}
+
+/* line 470, ../../js/vendor/ladda-bootstrap/css/ladda.scss */
+.ladda-button[data-style=contract-overlay][data-loading] .ladda-spinner {
+  opacity: 1;
+}
+
+/* line 2, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-x-rail {
+  position: absolute;
+  /* please don't change 'position' */
+  bottom: 3px;
+  /* there must be 'bottom' for ps-scrollbar-x-rail */
+  height: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  opacity: 0.6;
+  filter: alpha(opacity=0.6);
+  -o-transition: background-color .2s linear, opacity .2s linear;
+  -webkit-transition: background-color .2s linear, opacity .2s linear;
+  -moz-transition: background-color .2s linear, opacity .2s linear;
+  transition: background-color .2s linear, opacity .2s linear;
+}
+/* line 18, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container:hover .ps-scrollbar-x-rail, .ps-container.hover .ps-scrollbar-x-rail {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+/* line 23, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-x-rail:hover, .ps-container .ps-scrollbar-x-rail.hover, .ps-container .ps-scrollbar-x-rail.in-scrolling {
+  background-color: #eee;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+/* line 29, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-y-rail {
+  position: absolute;
+  /* please don't change 'position' */
+  right: 3px;
+  /* there must be 'right' for ps-scrollbar-y-rail */
+  width: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -o-transition: background-color .2s linear, opacity .2s linear;
+  -webkit-transition: background-color .2s linear, opacity .2s linear;
+  -moz-transition: background-color .2s linear, opacity .2s linear;
+  transition: background-color .2s linear, opacity .2s linear;
+}
+/* line 45, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container:hover .ps-scrollbar-y-rail, .ps-container.hover .ps-scrollbar-y-rail {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+/* line 50, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-y-rail:hover, .ps-container .ps-scrollbar-y-rail.hover, .ps-container .ps-scrollbar-y-rail.in-scrolling {
+  background-color: #eee;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+/* line 56, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-x {
+  position: absolute;
+  /* please don't change 'position' */
+  bottom: 0;
+  /* there must be 'bottom' for ps-scrollbar-x */
+  height: 8px;
+  background-color: #aaa;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -o-transition: background-color .2s linear;
+  -webkit-transition: background-color 0.2s linear;
+  -moz-transition: background-color .2s linear;
+  transition: background-color .2s linear;
+}
+/* line 71, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container.ie6 .ps-scrollbar-x {
+  font-size: 0;
+  /* fixed scrollbar height in xp sp3 ie6 */
+}
+/* line 76, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-x-rail:hover .ps-scrollbar-x, .ps-container .ps-scrollbar-x-rail.hover .ps-scrollbar-x {
+  background-color: #999;
+}
+/* line 80, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-y {
+  position: absolute;
+  /* please don't change 'position' */
+  right: 0;
+  /* there must be 'right' for ps-scrollbar-y */
+  width: 8px;
+  background-color: #aaa;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -o-transition: background-color .2s linear;
+  -webkit-transition: background-color 0.2s linear;
+  -moz-transition: background-color .2s linear;
+  transition: background-color .2s linear;
+}
+/* line 95, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container.ie6 .ps-scrollbar-y {
+  font-size: 0;
+  /* fixed scrollbar height in xp sp3 ie6 */
+}
+/* line 100, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y, .ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y {
+  background-color: #999;
+}
+/* line 105, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container.ie .ps-scrollbar-x, .ps-container.ie .ps-scrollbar-y {
+  visibility: hidden;
+}
+/* line 109, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container.ie:hover .ps-scrollbar-x, .ps-container.ie:hover .ps-scrollbar-y {
+  visibility: visible;
+}
+/* line 114, ../../js/vendor/perfect-scrollbar/src/perfect-scrollbar.scss */
+.ps-container.ie.hover .ps-scrollbar-x, .ps-container.ie.hover .ps-scrollbar-y {
+  visibility: visible;
+}
+
+/* line 9, ../scss/style.scss */
+body {
+  background: #000;
+  font-size: 16px;
+}
+
+/* line 18, ../scss/style.scss */
 .ng-enter-active {
   opacity: 1;
 }
 
-/* line 33, ../scss/style.scss */
+/* line 26, ../scss/style.scss */
 html,
 body {
   width: 100%;
   height: 100%;
 }
 
-/* line 40, ../scss/style.scss */
+/* line 33, ../scss/style.scss */
 .center-block {
   float: none;
 }
 
-/* line 44, ../scss/style.scss */
+/* line 37, ../scss/style.scss */
+.scroller {
+  max-height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+/* line 42, ../scss/style.scss */
+.scroller span {
+  word-break: break-all;
+}
+
+/* line 48, ../scss/style.scss */
 .center-page {
   position: absolute;
   top: 50%;
@@ -13684,7 +14284,7 @@ body {
   margin-top: -125px;
 }
 
-/* line 51, ../scss/style.scss */
+/* line 56, ../scss/style.scss */
 .logo {
   z-index: 65;
   position: relative;
@@ -13693,7 +14293,7 @@ body {
   text-shadow: 0px 5px 9px #000;
 }
 
-/* line 62, ../scss/style.scss */
+/* line 65, ../scss/style.scss */
 .video-section {
   position: fixed;
   width: 100%;
@@ -13702,7 +14302,7 @@ body {
   left: 0;
 }
 
-/* line 70, ../scss/style.scss */
+/* line 73, ../scss/style.scss */
 .video-section .pattern-overlay {
   background-color: rgba(71, 71, 71, 0.59);
   padding: 110px 0 32px;
@@ -13710,12 +14310,12 @@ body {
   /* Incase of overlay problems just increase the min-height*/
 }
 
-/* line 76, ../scss/style.scss */
+/* line 80, ../scss/style.scss */
 .player {
   font-size: 1px;
 }
 
-/* line 79, ../scss/style.scss */
+/* line 84, ../scss/style.scss */
 .view-slide-in.ng-enter {
   transition: all 1s ease;
   -webkit-transition: all 1s ease;

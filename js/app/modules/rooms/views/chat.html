@@ -14,8 +14,15 @@
 				  	  	</div>
 				  	</div>
 				</div>
-
-				<ul class="list-group" >
+				<ul 
+				class="list-group scroller" 
+				perfect-scrollbar="true" 
+				wheel-propagation="true" 
+				wheel-speed="2"
+				suppress-scrollX="true"
+				on-scroll="onScroll(scrollTop, scrollHeight)"
+				
+				 >
 					<li class="list-group-item" ng-repeat="msg in msgs  track by $index">
 						<b>{{msg.User.NickName}} : </b>
 						<span>{{msg.MsgText}}</span>

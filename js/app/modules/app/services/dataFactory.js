@@ -31,6 +31,7 @@
           cache: false
         });
       };
+      
       var createObject = function(collection, object) {
         var uri = baseUrl + '/' + database + '/collections/' + collection + '?apiKey=' + apiKey;
         return $http({
