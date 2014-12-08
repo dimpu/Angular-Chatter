@@ -31,7 +31,7 @@
           cache: false
         });
       };
-      
+
       var createObject = function(collection, object) {
         var uri = baseUrl + '/' + database + '/collections/' + collection + '?apiKey=' + apiKey;
         return $http({
@@ -59,85 +59,11 @@
           cache: false
         });
       };
-      var querySSE = function(collection, q){
-      	 q = q || {};
-        var
-          parameters = {};
-        parameters['q'] = JSON.stringify(q);
-        parameters['apiKey'] = apiKey;
-        var uri = baseUrl + '/' + database + '/collections/' + collection;
-        return $http({
-          method: "GET",
-          url: uri,
-          params: parameters,
-          cache: false
-        });
-      };
-
-      // var querySSE = function(collection, q) {
-      //   q = q || {};
-      //   var
-      //     parameters = {};
-      //   parameters['q'] = JSON.stringify(q);
-      //   parameters['apiKey'] = apiKey;
-
-      //   var uri = baseUrl + '/' + database + '/collections/' + collection + "/?";
-      //   angular.forEach(parameters, function(value, key) {
-      //     uri += "&" + key + "=" + value;
-      //   });
-
-      //   // var deferred = $q.defer();
-      //   // deferred.notify('About to get data');
-      //   //source
-      //   var url = "http://demo.techumber.com/Chatter/api.php?uri=" + encodeURIComponent(uri);
-      //   console.log(url);
-      //   var evtSource = new EventSource(url);
-      //   evtSource.onmessage = function(e) {
-      //     console.log(e.data);
-      //     resolve(e.data, e);
-      //   }
-      //   evtSource.onerror = function(e) {
-      //     console.log(e)
-      //     // reject(event);
-      //   }
-
-      //   return $q(function(resolve, reject) {
-      //     evtSource.onmessage = function(e) {
-      //       resolve(e.data, e);
-      //     }
-      //     evtSource.onerror = function(event) {
-      //       reject(event);
-      //     }
-      //   });
-
-      //   // return deferred.promise;
-
-      //   // return $http({
-      //   //   method: "GET", 
-      //   //   url   : uri, 
-      //   //   params: parameters,
-      //   //     cache : false
-      //   // });
-      // };
-      var queryLoop = function(collection, q, isFirst) {
-        q = q || {};
-        var
-          parameters = {};
-        parameters['q'] = JSON.stringify(q);
-        parameters['apiKey'] = apiKey;
-        var uri = baseUrl + '/' + database + '/collections/' + collection;
-        return $http({
-          method: "GET",
-          url: uri,
-          params: parameters,
-          cache: false
-        });
-
-
-      };
+      
+      
+    
       return {
         query: query,
-        querySSE: querySSE,
         queryById: queryById,
         create: createObject,
         update: updateObject,

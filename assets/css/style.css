@@ -14266,7 +14266,7 @@ body {
 
 /* line 37, ../scss/style.scss */
 .scroller {
-  max-height: 600px;
+  max-height: 400px;
   overflow: hidden;
   position: relative;
 }
