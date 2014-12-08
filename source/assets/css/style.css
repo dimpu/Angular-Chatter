@@ -14247,35 +14247,41 @@ body {
   font-size: 16px;
 }
 
-/* line 18, ../scss/style.scss */
+/* line 13, ../scss/style.scss */
+.ng-enter,
+.ng-leave {
+  position: relative;
+}
+
+/* line 23, ../scss/style.scss */
 .ng-enter-active {
   opacity: 1;
 }
 
-/* line 26, ../scss/style.scss */
+/* line 31, ../scss/style.scss */
 html,
 body {
   width: 100%;
   height: 100%;
 }
 
-/* line 33, ../scss/style.scss */
+/* line 38, ../scss/style.scss */
 .center-block {
   float: none;
 }
 
-/* line 37, ../scss/style.scss */
+/* line 42, ../scss/style.scss */
 .scroller {
   max-height: 400px;
   overflow: hidden;
   position: relative;
 }
-/* line 42, ../scss/style.scss */
+/* line 47, ../scss/style.scss */
 .scroller span {
   word-break: break-all;
 }
 
-/* line 48, ../scss/style.scss */
+/* line 53, ../scss/style.scss */
 .center-page {
   position: absolute;
   top: 50%;
@@ -14284,7 +14290,7 @@ body {
   margin-top: -125px;
 }
 
-/* line 56, ../scss/style.scss */
+/* line 61, ../scss/style.scss */
 .logo {
   z-index: 65;
   position: relative;
@@ -14293,7 +14299,7 @@ body {
   text-shadow: 0px 5px 9px #000;
 }
 
-/* line 65, ../scss/style.scss */
+/* line 69, ../scss/style.scss */
 .video-section {
   position: fixed;
   width: 100%;
@@ -14302,7 +14308,7 @@ body {
   left: 0;
 }
 
-/* line 73, ../scss/style.scss */
+/* line 77, ../scss/style.scss */
 .video-section .pattern-overlay {
   background-color: rgba(71, 71, 71, 0.59);
   padding: 110px 0 32px;
@@ -14310,12 +14316,12 @@ body {
   /* Incase of overlay problems just increase the min-height*/
 }
 
-/* line 80, ../scss/style.scss */
+/* line 84, ../scss/style.scss */
 .player {
   font-size: 1px;
 }
 
-/* line 84, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 .view-slide-in.ng-enter {
   transition: all 1s ease;
   -webkit-transition: all 1s ease;

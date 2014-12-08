@@ -7,6 +7,7 @@
     "use strict";
 
     define([
+            "RunManager",
             "modules/app/services/dataFactory",
             "modules/auth/auth",
             "modules/rooms/rooms",
@@ -14,7 +15,7 @@
             "RouteManager" ,
             'modules/app/directives/videoBgDirective'
         ],
-        function (dataFactory,Auth,Rooms,DashBoard,RouteManager,videoBgDirective){
+        function (RunManager,dataFactory,Auth,Rooms,DashBoard,RouteManager,videoBgDirective){
            
             var 
             app     = {}, 
@@ -35,14 +36,7 @@
                     .factory('dataFactory', dataFactory)
                     .directive('videoBg',videoBgDirective)
                     .config( RouteManager )
-                    .run(function($routeChangeStart){
-                         $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                            alert("HI");
-                         });
-                    });
-                    // .config(['$compileProvider ',function($compileProvider ){
-                    //     $compileProvider.debugInfoEnabled(true)
-                    // }]);
+                    .run(RunManager);
             angular.bootstrap( document.getElementsByTagName("body")[0], [ appName ]);
             return app;
         }

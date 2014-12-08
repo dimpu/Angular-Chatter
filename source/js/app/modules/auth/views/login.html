@@ -1,50 +1,63 @@
-
 <div ng-include="'js/app/modules/app/views/partials/logo-center.html'"></div>
 
 <div class="row row-centered">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 center-block">
-		<div class="panel panel-info" ng-controller="loginCtrl"  ng-class="{ 'shake' : loginForm.$invalid || loginError  }" >
-			  <div class="panel-heading">
-					<h3 class="panel-title">Login</h3>
-			  </div>
-			  <div class="panel-body">
-					<form name="loginForm" role="form">
-            <div class="form-group" ng-class="{ 'has-error' : loginError}">
-              <p ng-show="loginError" class="help-block">Incorrect username or password.</p>
-            </div>
-           
-					<div class="form-group">
+		<div 
+		class="panel panel-info bounceIn" 
+		ng-controller="loginCtrl"  
+		ng-class="{ 'shake' :  loginError  }" >
+			<div class="panel-heading">
+				<h3 class="panel-title">Login</h3>
+			</div>
+			<div class="panel-body">
+				<form name="loginForm" role="form">
+					<div 
+					class="form-group has-error" 
+					ng-show="loginError"
+					>
+						<p 
+							class="help-block">Incorrect username or password.
+						</p>
+					</div>
+					<div ng-show="loginSuccess" class="form-group has-success">
+						<p class="help-block">Successfully logged in.</p>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
 						<label for="">UserName</label>
-						<input type="text" class="form-control" id="" ng-required="true" ng-model="user.UserName" placeholder="UserName">
-						<span class="error" ng-show="loginForm.UserName.$error.required">Required!</span>
-
+						<input type="text" 
+						class="form-control" 
+						id="" 
+						name="username"
+						ng-required="true" 
+						ng-model="user.UserName" 
+						placeholder="UserName" />
+					 	<p ng-show="loginForm.username.$error.required && !loginForm.username.$pristine" class="help-block">	UserName is required.</p>
 					</div>
-				
-					<div class="form-group">
+					
+					<div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
 						<label for="">Password</label>
-						<input type="password" 
-            class="form-control" 
-            ng-required="true" 
-            ng-model="user.Password" 
-            name="password" 
-            placeholder="Password" />
-            <span class="error" ng-show="loginForm.UserName.$error.required">Required!</span>
+						<input type="password"
+						class="form-control"
+						ng-required="true"
+						ng-model="user.Password"
+						name="password"
+						placeholder="Password" />
+						<p ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">Password is required.</p>
 					</div>
-
-					<button type="submit"  
-          id="form-login-btn" 
-          class="btn btn-primary ladda-button"
-          data-style="expand-left" 
-					ng-click="login(user)"  ng-disabled="loginForm.$invalid">Login</button>
+					<button 
+						type="submit"
+						id="form-login-btn"
+						class="btn btn-primary ladda-button"
+						data-style="expand-right"
+						ng-click="login(user)"  
+						ng-disabled="loginForm.$invalid">Login
+					</button>
 				</form>
-			  </div>
+			</div>
 		</div>
 		<div ng-include="'js/app/modules/auth/views/partials/register-hint.html'"></div>
-
 		<div ng-include="'js/app/modules/auth/views/partials/forget-
 		hint.html'"> </div>
 		
-
 	</div>
 </div>
-	
