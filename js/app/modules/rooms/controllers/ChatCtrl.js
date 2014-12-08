@@ -35,7 +35,7 @@
         }; 
         msg['RoomId']   = $routeParams.RoomId;
         msg['Created']  = new Date().getTime();
-        $scope.msg.message="";
+        $scope.msg.MsgText="";
         dataFactory.create("msgs",msg)
         .success(function(data){
           console.log(data);
