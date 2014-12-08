@@ -13,7 +13,7 @@
 		],function(HomeCtrl,MenuCtrl,CreateCtrl,ChatCtrl,uniqueRommDirective){
 
     var ModuleName="Rooms";
-		  angular.module( ModuleName, ['ui.bootstrap'] )
+		  angular.module( ModuleName, [] )
 		  .controller("rooms.HomeCtrl",HomeCtrl)
       .controller("rooms.CreateCtrl",CreateCtrl)
       .controller("rooms.ChatCtrl",ChatCtrl)

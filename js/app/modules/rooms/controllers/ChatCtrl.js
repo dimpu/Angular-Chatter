@@ -8,9 +8,24 @@
 			$scope.msgs=[];
       $scope.NoChat=true;
 
+      // dataFactory.query("msgs",{"RoomId":$routeParams.RoomId})
+      // .success(function(data){
+      //   $scope.msgs=data;
+      //   if(data.length){
+      //     $scope.NoChat=false;
+      //   }
+      // });
+
+      dataFactory.queryById("rooms",$routeParams.RoomId)
+      .success(function(data){
+        $scope.ChatTitle=data.RoomName;
+      });
+
       dataFactory.querySSE("msgs",{"RoomId": $routeParams.RoomId})
       .then(function(data){
         console.log(data);
+        $scope.msgs= data;
+         $scope.NoChat=false;
       });
 
 			$scope.pushMsg=function(msg){
@@ -20,7 +35,7 @@
         }; 
         msg['RoomId']   = $routeParams.RoomId;
         msg['Created']  = new Date().getTime();
-
+        $scope.msg.message="";
         dataFactory.create("msgs",msg)
         .success(function(data){
           console.log(data);

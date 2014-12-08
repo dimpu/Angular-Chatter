@@ -52,7 +52,7 @@
 		 		cache : false
 		 	});
 		};
-		var deleteObject = function ( collection, object) {
+	var deleteObject = function ( collection, object) {
 			var uri = baseUrl + '/' + database + '/collections/' + collection + '/' + object._id.$oid + '?apiKey=' + apiKey;
 		 	return $http({
 		 		method: "DELETE", 
@@ -72,15 +72,28 @@
 
         uri += "&"+key+"="+value;        
       });
-      var deferred = $q.defer();
-      deferred.notify('About to get data');
+      // var deferred = $q.defer();
+      // deferred.notify('About to get data');
       //source
-      var evtSource = new EventSource(uri);
-      evtSource.onmessage = function(e) {
-         deferred.resolve(e.data,e);
-         console.log(e.data);
-      }
-      return deferred.promise;
+      var url="http://demo.techumber.com/Chatter/api.php?uri="+encodeURIComponent(uri);
+
+      var evtSource = new EventSource(url);
+        // evtSource.onmessage =function(event){
+          
+        // };
+
+         
+      
+    return $q(function(resolve,reject){
+        evtSource.onmessage =function(e){
+            resolve(e.data,e);
+        }
+        evtSource.onerror = function(event) {
+	        reject(event);
+	    }
+    });
+
+      // return deferred.promise;
 
       // return $http({
       //   method: "GET", 
