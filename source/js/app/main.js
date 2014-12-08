@@ -7,7 +7,6 @@
     "use strict";
 
     define([
-            "utils/logger",
             "modules/app/services/dataFactory",
             "modules/auth/auth",
             "modules/rooms/rooms",
@@ -15,12 +14,11 @@
             "RouteManager" ,
             'modules/app/directives/videoBgDirective'
         ],
-        function ($log,dataFactory,Auth,Rooms,DashBoard,RouteManager,videoBgDirective){
+        function (dataFactory,Auth,Rooms,DashBoard,RouteManager,videoBgDirective){
            
             var 
             app     = {}, 
             appName = 'Chatter';
-            $log.debug("Initilizing "+ appName);
 
             /**
              * Start the main application
@@ -36,13 +34,16 @@
                     )
                     .factory('dataFactory', dataFactory)
                     .directive('videoBg',videoBgDirective)
-                    .config( RouteManager );
+                    .config( RouteManager )
+                    .run(function($routeChangeStart){
+                         $rootScope.$on("$routeChangeStart", function (event, next, current) {
+                            alert("HI");
+                         });
+                    });
                     // .config(['$compileProvider ',function($compileProvider ){
                     //     $compileProvider.debugInfoEnabled(true)
                     // }]);
-
             angular.bootstrap( document.getElementsByTagName("body")[0], [ appName ]);
-
             return app;
         }
     );

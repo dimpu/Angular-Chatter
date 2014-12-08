@@ -112,7 +112,7 @@ module.exports = function(grunt) {
         },
 		watch: {
             src: {
-                files: ['../source/asserts/scss/**/*.scss','../source/js/app/**'],
+                files: ['../source/asserts/scss/*.scss','../source/js/app/**'],
                 tasks: ['compass:bootstrap','copy:build_assets','build_bin']
             },
             options: {
@@ -139,8 +139,8 @@ module.exports = function(grunt) {
 		compass: {                      // Task
 		    bootstrap: {               // Target
 		      options: {              // Target options
-		        sassDir: '../source/asserts/scss',
-		        cssDir: '../source/asserts/css',
+		        sassDir: '../source/assets/scss',
+		        cssDir: '../source/assets/css',
 		        environment: 'development'//production
 		      }
 		    }
@@ -181,6 +181,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'clean:bin',
 		'copy:index',
+        'compass:bootstrap',
 		'copy:build_assets',
 		'copy:build_appjs',
 		'concat:vendor',

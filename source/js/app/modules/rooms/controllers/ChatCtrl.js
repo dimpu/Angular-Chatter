@@ -3,30 +3,41 @@
 
 (function (define){
 	define([],function(){
-		var ChatCtrl =function($scope,$cookieStore,$location,$routeParams,dataFactory){
+		var ChatCtrl =function($scope,$interval,$cookieStore,$location,$routeParams,dataFactory){
 			$scope.ChatTitle="No Title";
 			$scope.msgs=[];
       $scope.NoChat=true;
 
-      // dataFactory.query("msgs",{"RoomId":$routeParams.RoomId})
-      // .success(function(data){
-      //   $scope.msgs=data;
-      //   if(data.length){
-      //     $scope.NoChat=false;
-      //   }
-      // });
+      $scope.scrollTop = 0
+      $scope.scrollHeight = 0
+      $scope.onScroll = function (scrollTop, scrollHeight) {
+        $scope.scrollTop = scrollTop
+        $scope.scrollHeight = scrollHeight
+      }
 
       dataFactory.queryById("rooms",$routeParams.RoomId)
       .success(function(data){
         $scope.ChatTitle=data.RoomName;
       });
+      var promise = $interval(function(){
+        dataFactory.query("msgs",{"RoomId": $routeParams.RoomId})
+        .then(function(data){
+          console.log(data);
+            $scope.msgs = data.data;
+            $scope.NoChat=false;
+            var divHeight=$(".scroller div").height();
+            var scrollPos=$(".scroller").scrollTop();
+            console.log(divHeight +" :: "+ scrollPos);
+            $(".scroller").scrollTop($(".scroller div").height());
+            $(".scroller").perfectScrollbar('update');
 
-      dataFactory.querySSE("msgs",{"RoomId": $routeParams.RoomId})
-      .then(function(data){
-        console.log(data);
-        $scope.msgs= data;
-         $scope.NoChat=false;
-      });
+            if(scrollPos <= divHeight && scrollPos > divHeight -100 ) {
+             
+            }
+           
+        });
+
+      },500);
 
 			$scope.pushMsg=function(msg){
 				msg['User'] ={
@@ -35,17 +46,17 @@
         }; 
         msg['RoomId']   = $routeParams.RoomId;
         msg['Created']  = new Date().getTime();
-        $scope.msg.message="";
+      
         dataFactory.create("msgs",msg)
         .success(function(data){
           console.log(data);
         });
-
+        $scope.msg.MsgText="";
 			}
 		};
 
 
-		ChatCtrl.$inject=['$scope','$cookieStore','$location','$routeParams','dataFactory'];
+		ChatCtrl.$inject=['$scope','$interval','$cookieStore','$location','$routeParams','dataFactory'];
 		return ChatCtrl;
 	});
 }(define));

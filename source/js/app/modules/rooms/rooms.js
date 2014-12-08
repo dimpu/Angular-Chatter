@@ -13,12 +13,12 @@
 		],function(HomeCtrl,MenuCtrl,CreateCtrl,ChatCtrl,uniqueRommDirective){
 
     var ModuleName="Rooms";
-		  angular.module( ModuleName, ['ui.bootstrap'] )
+		  angular.module( ModuleName, ['perfect_scrollbar'] )
 		  .controller("rooms.HomeCtrl",HomeCtrl)
       .controller("rooms.CreateCtrl",CreateCtrl)
       .controller("rooms.ChatCtrl",ChatCtrl)
-      .directive("uniqueroom",uniqueRommDirective);
-      // .controller("rooms.MenuCtrl",MenuCtrl)
+      .directive("uniqueroom",uniqueRommDirective)
+      .controller("rooms.MenuCtrl",MenuCtrl);
       // .controller("rooms.CreateCtrl",CreateCtrl);
 		 return ModuleName;
 	});

@@ -19,34 +19,43 @@
 							ng-model="room.RoomName"
 							ng-required="true" 
 							ng-minlength="3"
-              ng-maxlenght="10"
-              uniqueroom="true"
+			              	ng-maxlenght="10"
+			              	uniqueroom="true"
 							placeholder="RoomName">
 							<p ng-show="createRoomForm.RoomName.$error.required && !createRoomForm.RoomName.$pristine">This Field is required<p>
                 
-              <p ng-show="createRoomForm.RoomName.$error.uniqueroom && !createRoomForm.RoomName.$pristine">This Room already exists.<p>
+              				<p ng-show="createRoomForm.RoomName.$error.uniqueroom && !createRoomForm.RoomName.$pristine">This Room already exists.<p>
 
 							<p ng-show="createRoomForm.RoomName.$error.minlength && !createRoomForm.RoomName.$pristine">Min Length 3 chars<p>
-              <p ng-show="createRoomForm.RoomName.$error.maxlength && !createRoomForm.RoomName.$pristine">Max Length 10 chars<p>
+              				<p ng-show="createRoomForm.RoomName.$error.maxlength && !createRoomForm.RoomName.$pristine">Max Length 10 chars<p>
 						</div>
 
-            <div class="form-group">
-              <label for="">Is Public?</label>
-              <select name="isPublic" id="" class="form-control" ng-model="room.isPublic">
-                <option ng-selected="true" value="true">Yes</option>
-                <option value="false">No</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="">Description</label>
-                <textarea 
-                  class="form-control" 
-                  name="Description"
-                  ng-model="room.Description" 
-                  placeholder="Description">
-                </textarea>
-            </div>
+			            <div class="form-group">
+			              <label for="">Is Public?</label>
+			              <select 
+			              name="isPublic" 
+			              id="" 
+			              class="form-control" 
+			              ng-required="true"
+			              ng-model="room.isPublic" 
+			              >
+			              <option value="">-- choose one --</option>
+			                <option  value="true" >Yes</option>
+			                <option value="false">No</option>
+			              </select>
+			              <p ng-show="createRoomForm.isPublic.$error.required && !createRoomForm.isPublic.$pristine">This Field is required<p>
+			              	
+			            </div>
+			            
+			            <div class="form-group">
+			                <label for="">Description</label>
+			                <textarea 
+			                  class="form-control" 
+			                  name="Description"
+			                  ng-model="room.Description" 
+			                  placeholder="Description">
+			                </textarea>
+			            </div>
   
 						<button type="submit" id="form-room-crete-btn" class="btn btn-primary" ng-disabled="createRoomForm.$invalid">Create</button>
 					</form>

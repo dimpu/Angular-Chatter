@@ -4,26 +4,16 @@
 (function ( define ){
 
   define([],function(){
-    var MenuCtrl=function($scope, $modal, $log){
-      var modalInstance;
-      $scope.openCreateRoomWindow=function(){
-         modalInstance = $modal.open({
-            templateUrl: 'js/app/modules/rooms/views/partials/CreatRoom.html',
-            controller: 'CreateRoomCtrl',
-            // size: size,
-            resolve: {
-              items: function () {
-                return $scope.items;
-              }
-            }
-          });
+    var MenuCtrl=function($scope, $log,$cookieStore,$location){
+      $log.log("Initialize Menu"+ new Date());   
+      $scope.logout=function(){
+        $cookieStore.remove('LoggedInUserId');
+        $cookieStore.remove('LoggedInUserId');
+        $location.path('/');
       }; 
     };
-
-    MenuCtrl.$inject=['$scop'];
-
+    MenuCtrl.$inject=['$scope','$log','$cookieStore','$location'];
     return MenuCtrl;
-
   });
 
 }(define));
