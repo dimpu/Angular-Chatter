@@ -1,9 +1,5 @@
-
-
 <div ng-include="'js/app/modules/app/views/partials/logo-center.html'"></div>
-
 <div ng-include="'js/app/modules/rooms/views/partials/menu.html'"></div>
-
 <div class="row row-centered">
 	<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 center-block">
 		<div class="panel panel-info">
@@ -19,7 +15,7 @@
 				  	</div>
 				</div>
 
-				<ul class="list-group">
+				<ul class="list-group" >
 					<li class="list-group-item" ng-repeat="msg in msgs  track by $index">
 						<b>{{msg.User.NickName}} : </b>
 						<span>{{msg.MsgText}}</span>
@@ -35,7 +31,7 @@
 						  ng-model="msg.MsgText"
 				          >
 				          <span class="input-group-btn">
-				            <button class="btn btn-primary" type="button">Go!</button>
+				            <button class="btn btn-primary" type="submit">Send!</button>
 				          </span>
 				        </div>
 				    </form>

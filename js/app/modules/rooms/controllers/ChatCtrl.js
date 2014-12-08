@@ -3,7 +3,7 @@
 
 (function (define){
 	define([],function(){
-		var ChatCtrl =function($scope,$cookieStore,$location,$routeParams,dataFactory){
+		var ChatCtrl =function($scope,$interval,$cookieStore,$location,$routeParams,dataFactory){
 			$scope.ChatTitle="No Title";
 			$scope.msgs=[];
       $scope.NoChat=true;
@@ -21,12 +21,22 @@
         $scope.ChatTitle=data.RoomName;
       });
 
-      dataFactory.querySSE("msgs",{"RoomId": $routeParams.RoomId})
-      .then(function(data){
-        console.log(data);
-        $scope.msgs= data;
-         $scope.NoChat=false;
-      });
+      // dataFactory.querySSE("msgs",{"RoomId": $routeParams.RoomId})
+      // .then(function(data){
+      //   console.log(data);
+      //    $scope.msgs=JSON.parse(data);
+      //      $scope.NoChat=false;
+      // });
+
+      var promise = $interval(function(){
+        dataFactory.query("msgs",{"RoomId": $routeParams.RoomId})
+        .then(function(data){
+          console.log(data);
+            $scope.msgs = data.data;
+            $scope.NoChat=false;
+        });
+
+      },500);
 
 			$scope.pushMsg=function(msg){
 				msg['User'] ={
@@ -35,17 +45,18 @@
         }; 
         msg['RoomId']   = $routeParams.RoomId;
         msg['Created']  = new Date().getTime();
-        $scope.msg.MsgText="";
+        
         dataFactory.create("msgs",msg)
         .success(function(data){
           console.log(data);
         });
+        $scope.msg.MsgText="";
 
 			}
 		};
 
 
-		ChatCtrl.$inject=['$scope','$cookieStore','$location','$routeParams','dataFactory'];
+		ChatCtrl.$inject=['$scope','$interval','$cookieStore','$location','$routeParams','dataFactory'];
 		return ChatCtrl;
 	});
 }(define));

@@ -13,7 +13,7 @@
 		],function(HomeCtrl,MenuCtrl,CreateCtrl,ChatCtrl,uniqueRommDirective){
 
     var ModuleName="Rooms";
-		  angular.module( ModuleName, [] )
+		  angular.module( ModuleName, ['perfect_scrollbar'] )
 		  .controller("rooms.HomeCtrl",HomeCtrl)
       .controller("rooms.CreateCtrl",CreateCtrl)
       .controller("rooms.ChatCtrl",ChatCtrl)
