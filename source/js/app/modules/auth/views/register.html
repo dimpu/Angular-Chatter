@@ -4,7 +4,7 @@
 
 <div class="row row-centered">
 	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 center-block">
-		<div class="panel panel-info" ng-controller="registerCtrl" ng-class="{ 'shake' : registerForm.$invalid  }">
+		<div class="panel panel-info bounceIn" ng-controller="registerCtrl" ng-class="{ 'shake' : isInValid  }">
 			  <div class="panel-heading">
 					<h3 class="panel-title">Register</h3>
 			  </div>
@@ -13,7 +13,7 @@
 				<form role="form" novalidate name="registerForm"  ng-submit="register_user(user)">
 					<div class="form-group" ng-class="{ 'has-error' : registerForm.username.$invalid && !registerForm.username.$pristine }">
 
-						<label for="">UserName</label>
+						<label for="">User Name</label>
 						<input 
 						type="text" 
 						ng-model="user.UserName" 
@@ -22,7 +22,7 @@
 						uniqueuser="true"
 						class="form-control" 
 						name="username" 
-						placeholder="UserName" />
+						placeholder="User Name" />
 						
 					 	<p ng-show="registerForm.username.$error.required && !registerForm.username.$pristine" class="help-block">UserName is required.</p>
 
@@ -122,7 +122,8 @@
 
 					<button 
 					type="submit" 
-					class="btn btn-primary" 
+					class="btn btn-primary ladda-button" 
+          data-style="expand-right"
           id="form-register-btn"
 					ng-disabled="registerForm.$invalid">Register</button>
 				</form>

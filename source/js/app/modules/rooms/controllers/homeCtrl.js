@@ -3,7 +3,7 @@
 //modules/rooms/controllers/HomeCtrl
 
 (function (define){
-
+"use strict";
 	define(["modules/app/services/dataFactory"],function(){
 		var roomHomeCtrl=function($scope,$cookieStore,$location,dataFactory){
 			$scope.rooms=[];

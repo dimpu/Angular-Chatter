@@ -2,6 +2,10 @@
 
 
 (function (define){
+
+  "use strict";
+
+  
 	define([],function(){
 		var ChatCtrl =function($scope,$interval,$cookieStore,$location,$routeParams,dataFactory){
 			$scope.ChatTitle="No Title";

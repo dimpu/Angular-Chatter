@@ -1,5 +1,7 @@
 
 (function(define){
+
+  "use strict";
 	define([
 		"modules/app/services/dataFactory"
 		],

@@ -5,7 +5,7 @@
 
 
 (function ( define ){
-
+"use strict";
 	define([],function(){
 		var videoBgDirective=function(){
 			 return {
@@ -13,7 +13,7 @@
 			    compile: function(scope,element,attrs){
 			    	return {
 			    		post:function(){
-			    		     $(".player").mb_YTPlayer();
+			    		     // $(".player").mb_YTPlayer();
 			    		}
 			    	}
 			    }

@@ -5,11 +5,10 @@
  *  @author Aravind Buddha
  */
 
- (function( head ) {
+ (function(  ) {
     "use strict";
 
-        require.config (
-            {
+        require.config ({
             appDir  : '',
             baseUrl : './js/app',
             paths   : {
@@ -27,4 +26,4 @@
 
 
 
-}( window.head ));
+}( require));

@@ -2,7 +2,7 @@
 
 
 (function ( define, angular ){
-
+"use strict";
 	define([
       "modules/app/services/dataFactory",
       "modules/auth/directives/uniqueUserDirective",

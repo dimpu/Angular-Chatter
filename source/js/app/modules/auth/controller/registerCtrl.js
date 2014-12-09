@@ -1,11 +1,17 @@
 
 
 (function ( define ) {
-
+"use strict";
       
-	define([ "modules/app/services/dataFactory" ],function(dataFactory){
+	define([ 
+    "modules/app/services/dataFactory" 
+    ],function(dataFactory){
 		var registerCtrl=function($scope,$cookieStore,$location,dataFactory){
+        console.log($scope);
       $scope.register_user=function(user){
+        if($scope.registerForm.$invalid){
+          $scope.isInValid=true;
+        }
       var loader = Ladda.create(document.getElementById("form-register-btn"));
         user['Created']= user['Updated'] = new Date().getTime();
         loader.start();
