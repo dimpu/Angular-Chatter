@@ -33,17 +33,17 @@
 			            <div class="form-group">
 			              <label for="">Is Public?</label>
 			              <select 
-			              name="isPublic" 
+			              name="IsPublic" 
 			              id="" 
 			              class="form-control" 
 			              ng-required="true"
-			              ng-model="room.isPublic" 
+			              ng-model="room.IsPublic" 
 			              >
 			              <option value="">-- choose one --</option>
 			                <option  value="true" >Yes</option>
 			                <option value="false">No</option>
 			              </select>
-			              <p ng-show="createRoomForm.isPublic.$error.required && !createRoomForm.isPublic.$pristine">This Field is required<p>
+			              <p ng-show="createRoomForm.IsPublic.$error.required && !createRoomForm.IsPublic.$pristine">This Field is required<p>
 			              	
 			            </div>
 			            
@@ -57,7 +57,12 @@
 			                </textarea>
 			            </div>
   
-						<button type="submit" id="form-room-crete-btn" class="btn btn-primary" ng-disabled="createRoomForm.$invalid">Create</button>
+						<button 
+						type="submit" 
+						id="form-room-crete-btn" 
+						class="btn btn-primary ladda-button"
+						data-style="expand-right"
+						ng-disabled="createRoomForm.$invalid">Create</button>
 					</form>
 			  </div>
 		</div>

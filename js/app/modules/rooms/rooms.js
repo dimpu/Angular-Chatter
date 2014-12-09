@@ -2,7 +2,7 @@
 //modules/rooms/rooms.js
 
 (function (define){
-
+"use strict";
 	define([
 		"modules/rooms/controllers/HomeCtrl",
     "modules/rooms/controllers/MenuCtrl",

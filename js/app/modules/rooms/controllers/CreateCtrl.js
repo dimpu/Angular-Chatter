@@ -1,7 +1,7 @@
 
 
 (function (define){
-
+"use strict";
 	define([],function(){
 
 		var CreateCtrl=function($scope,$cookieStore,$location,dataFactory){
@@ -10,10 +10,8 @@
       $scope.createRoom=function(room){
         room['CreatorId']=$cookieStore.get("LoggedInUserId");
          loader.start();
-         console.log(room);
         dataFactory.create("rooms",room)
         .success(function(data){
-          console.log(data);
           loader.stop();
           $location.path('/rooms');
         });

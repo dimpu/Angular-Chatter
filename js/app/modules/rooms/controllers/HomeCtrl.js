@@ -3,16 +3,16 @@
 //modules/rooms/controllers/HomeCtrl
 
 (function (define){
-
+"use strict";
 	define(["modules/app/services/dataFactory"],function(){
 		var roomHomeCtrl=function($scope,$cookieStore,$location,dataFactory){
 			$scope.rooms=[];
       $scope.IsLoading=true;
       $scope.RoomsNotAvilable=false;
         var getCondition ={
-          $or: [ 
-            { CreatorId:$cookieStore.get("LoggedInUserId") }, 
-            { IsPublic: true } 
+          "$or": [ 
+            { "CreatorId":$cookieStore.get("LoggedInUserId") }, 
+            { "IsPublic": "true" } 
           ]
         };
 			dataFactory.query("rooms",getCondition)
