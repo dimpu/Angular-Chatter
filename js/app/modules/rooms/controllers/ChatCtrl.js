@@ -65,8 +65,8 @@
             //   $(".scroller").perfectScrollbar('update');  
             // }
             
-            $log.log("$scope.scrollTop:"+$scope.scrollTop);
-            $log.log("$scope.scrollHeight:"+$scope.scrollHeight);
+            // $log.log("$scope.scrollTop:"+$scope.scrollTop);
+            // $log.log("$scope.scrollHeight:"+$scope.scrollHeight);
             $timeout(pull(),500);
 
 
