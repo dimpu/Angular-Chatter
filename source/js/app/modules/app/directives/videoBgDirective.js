@@ -1,4 +1,7 @@
-
+/**
+ * @author  Aravind Buddha
+ * @desc    To set a video background to the application 
+ */
 
 
 (function ( define ){
