@@ -1,5 +1,5 @@
 (function ( define ){
-
+"use strict";
 	define([],function(){
 		var forgetCtrl=function($scope){
 

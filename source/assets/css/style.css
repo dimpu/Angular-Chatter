@@ -14132,8 +14132,8 @@ button.close {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  opacity: 0.6;
-  filter: alpha(opacity=0.6);
+  opacity: 0;
+  filter: alpha(opacity=0);
   -o-transition: background-color .2s linear, opacity .2s linear;
   -webkit-transition: background-color .2s linear, opacity .2s linear;
   -moz-transition: background-color .2s linear, opacity .2s linear;

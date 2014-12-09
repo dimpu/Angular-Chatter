@@ -1,4 +1,8 @@
 (function(define) {
+
+  "use strict";
+
+  
   define([], function() {
     var dataFactory = function($http, $q) {
       var

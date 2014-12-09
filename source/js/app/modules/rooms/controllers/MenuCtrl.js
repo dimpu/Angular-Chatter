@@ -2,7 +2,7 @@
 //rooms Menu Ctrl
 
 (function ( define ){
-
+"use strict";
   define([],function(){
     var MenuCtrl=function($scope, $log,$cookieStore,$location){
       $log.log("Initialize Menu"+ new Date());   

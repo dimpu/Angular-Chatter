@@ -2,7 +2,7 @@
 
 
 (function ( define ) {
-
+"use strict";
 	define([], 
 		function(){
 			var loginCtrl=function($scope,$cookieStore,$location,dataFactory){

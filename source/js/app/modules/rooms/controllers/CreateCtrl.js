@@ -1,7 +1,7 @@
 
 
 (function (define){
-
+"use strict";
 	define([],function(){
 
 		var CreateCtrl=function($scope,$cookieStore,$location,dataFactory){

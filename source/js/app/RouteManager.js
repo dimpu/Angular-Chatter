@@ -1,5 +1,5 @@
 (function(){
-
+"use strict";
 	define([],function(){
 
 		var RouteManager=function($routeProvider){
