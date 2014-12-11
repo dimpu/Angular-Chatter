@@ -4,7 +4,6 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 center-block">
 		<div 
 		class="panel panel-info bounceIn" 
-		ng-controller="loginCtrl"  
 		ng-class="{ 'shake' :  loginError  }" >
 			<div class="panel-heading">
 				<h3 class="panel-title">Login</h3>
@@ -12,18 +11,16 @@
 			<div class="panel-body">
 				<form name="loginForm" role="form">
 					<div 
-					class="form-group has-error" 
-					ng-show="loginError"
-					>
-						<p 
-							class="help-block">Incorrect username or password.
-						</p>
+					class="form-group has-error" ng-show="loginError">
+					<p class="help-block">
+						Incorrect username or password.
+					</p>
 					</div>
 					<div ng-show="loginSuccess" class="form-group has-success">
 						<p class="help-block">Successfully logged in.</p>
 					</div>
 					<div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
-						<label for="">UserName</label>
+						<label for="">User Name</label>
 						<input type="text" 
 						class="form-control" 
 						id="" 

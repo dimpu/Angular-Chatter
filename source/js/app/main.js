@@ -11,11 +11,10 @@
             "modules/app/services/dataFactory",
             "modules/auth/auth",
             "modules/rooms/rooms",
-            "modules/dashboard/dashboard",
             "RouteManager" ,
             'modules/app/directives/videoBgDirective'
         ],
-        function (RunManager,dataFactory,Auth,Rooms,DashBoard,RouteManager,videoBgDirective){
+        function (RunManager,dataFactory,Auth,Rooms,RouteManager,videoBgDirective){
            
             var 
             app     = {}, 

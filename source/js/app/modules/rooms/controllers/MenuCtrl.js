@@ -7,8 +7,7 @@
     var MenuCtrl=function($scope, $log,$cookieStore,$location){
       $log.log("Initialize Menu"+ new Date());   
       $scope.logout=function(){
-        $cookieStore.remove('LoggedInUserId');
-        $cookieStore.remove('LoggedInUserId');
+      
         $location.path('/');
       }; 
     };

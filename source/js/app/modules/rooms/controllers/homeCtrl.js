@@ -10,9 +10,9 @@
       $scope.IsLoading=true;
       $scope.RoomsNotAvilable=false;
         var getCondition ={
-          $or: [ 
-            { CreatorId:$cookieStore.get("LoggedInUserId") }, 
-            { IsPublic: true } 
+          "$or": [ 
+            { "CreatorId":$cookieStore.get("LoggedInUserId") }, 
+            { "IsPublic": "true" } 
           ]
         };
 			dataFactory.query("rooms",getCondition)

@@ -1,11 +1,12 @@
 /**
  * @author  Aravind Buddha
  * @desc    To set a video background to the application 
+ *
+ * 
  */
 
-
 (function ( define ){
-"use strict";
+	"use strict";
 	define([],function(){
 		var videoBgDirective=function(){
 			 return {

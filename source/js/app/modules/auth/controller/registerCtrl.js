@@ -1,13 +1,15 @@
 
 
 (function ( define ) {
-"use strict";
+
+  "use strict";
       
 	define([ 
     "modules/app/services/dataFactory" 
-    ],function(dataFactory){
-		var registerCtrl=function($scope,$cookieStore,$location,dataFactory){
-        console.log($scope);
+    ],
+    function(dataFactory){
+		  var RegisterCtrl=function($scope,$cookieStore,$location,AuthService){
+        
       $scope.register_user=function(user){
         if($scope.registerForm.$invalid){
           $scope.isInValid=true;
@@ -15,22 +17,18 @@
       var loader = Ladda.create(document.getElementById("form-register-btn"));
         user['Created']= user['Updated'] = new Date().getTime();
         loader.start();
-        dataFactory.create("users",user)
-        .success(function(data){
-          $cookieStore.put("LoggedInUserId",data._id.$oid);
-          $cookieStore.put("LoggedInNickName",data.NickName);
-          $location.path('/rooms');
-          loader.stop();
-        })
-        .error(function(){
+        AuthService.register(user,function(isSuccess){
+          if(isSuccess){
+            $location.path('/rooms');
+          }
           loader.stop();
         });
       }
       
 		};
-		registerCtrl.$inject=['$scope','$cookieStore','$location','dataFactory'];
+		RegisterCtrl.$inject=['$scope','$cookieStore','$location','AuthService'];
 
-		return registerCtrl;
+		return RegisterCtrl;
 	});
 	
 }( define ));

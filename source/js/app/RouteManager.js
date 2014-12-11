@@ -6,27 +6,20 @@
 			$routeProvider
 			.when( '/login', {
                 templateUrl : "./js/app/modules/auth/views/login.html",
-                controller  : "loginCtrl"
+                controller  : "LoginCtrl"
             })
             .when( '/register', {
                 templateUrl : "./js/app/modules/auth/views/register.html",
-                controller  : "registerCtrl"
+                controller  : "RegisterCtrl"
             })
             .when( '/forget', {
                 templateUrl : "./js/app/modules/auth/views/forget.html",
-                controller  : "forgetCtrl"
-            })
-            .when( '/forget', {
-                templateUrl : "./js/app/modules/auth/views/forget.html",
-                controller  : "forgetCtrl"
-            })
-            .when('/dashboard',{
-                templateUrl : "./js/app/modules/bashboard/views/home.html",
-                controller  : "dashboard.homeCtrl"
+                controller  : "ForgetCtrl"
             })
             .when('/rooms',{
                 templateUrl : "./js/app/modules/rooms/views/home.html",
-                controller  : "rooms.HomeCtrl"
+                controller  : "rooms.HomeCtrl",
+                resolve     : false
             })
             .when('/rooms/create',{
                 templateUrl : "./js/app/modules/rooms/views/create.html",
